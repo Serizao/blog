@@ -1,0 +1,55 @@
+html {
+  background-color: white;
+    text-align:justify;
+  text-justify: inter-word;
+}
+
+h1,h2,h3,h4,h5,h6,li,p,label {
+  font-family: "Droid Sans";
+  font-weight: 400;
+}
+
+h1,h2,h3,h4 {
+  color : #0087c2;
+}
+
+p,li,h5,h6,label {
+  color : #555555;
+}
+
+span {
+  text-align:center;
+}
+
+.tableau p {
+   clear:left;
+   margin:0px;
+   padding:0px;
+   height:100% !important; height:1em;
+  }
+.legende {font-weight:bold}
+
+.case1 {
+  width:200px;
+  background-color: white;
+  display:inline;
+  float:left;
+  margin:0px;
+  border-bottom: solid 1px black;
+  padding:3px;
+  }
+
+.case2 {
+  width:200px;
+  border-left:solid black 1px;
+  background-color: white;
+  display:inline;
+  float:left;
+  margin:0px;
+  border-bottom: solid 1px black;
+  padding:3px;
+  }
+
+.separator {
+  color: #0087c2;
+}

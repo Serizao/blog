@@ -1,0 +1,43 @@
+img {
+	max-width: 100%;
+}
+
+html {
+	background-color: white;
+  	text-align:justify;
+	text-justify: inter-word;
+}
+
+h1,h2,h3,h4,h5,h6,li,p {
+  font-family: "Free Sans";
+  font-weight: 400;
+}
+
+h1,h2,h3,h4 {
+	color : #0087c2;
+}
+
+p,li,h5,h6 {
+	color : #555555;
+}
+
+.language-bash {
+	background-color: #132626;
+	color: white;
+	font-family: terminus;
+}
+
+pre {
+	padding: 5px;
+	background-color: #132626;
+	width: 50%;
+	border: solid 2px #1d1326;
+}
+
+
+.footer {
+	float: bottom;
+	background-color: #E2E2E2;
+	text-align:center;
+	width: 100%;
+}
