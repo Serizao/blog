@@ -1,11 +1,14 @@
 html {
   background-color: white;
-    text-align:justify;
+  text-align:justify;
   text-justify: inter-word;
 }
 
+.droid,h1,h2,h3,h4,h5,h6,li,p,label {
+    font-family: "Droid Sans";
+}
+
 h1,h2,h3,h4,h5,h6,li,p,label {
-  font-family: "Droid Sans";
   font-weight: 400;
 }
 

@@ -42,7 +42,6 @@ printHeader($page,$errMsg);
 		<label for"description">En-tête (sans retour à la ligne)</label><br>
 		<textarea id="description" name="description" rows="5" cols="60"><?php if ($description) echo $description;?></textarea><br>
 		<label for="content">Contenu</label><br><textarea id="content" rows="25" cols="60" name="content"><?php if ($content) echo "$content";?></textarea><br>
-		<iframe src="imgmgr.php" height="388" widthz="300"></iframe>
 		<input type="submit">
 	</form>
 <?php

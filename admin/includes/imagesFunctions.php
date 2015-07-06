@@ -23,7 +23,7 @@ function resize($imgOriFilename,$imgDestFilename,$width,$height){
 	}
 
 	$destImg = imagecreatetruecolor($width, $height);
-	imageinterlace($destImg, true); //pour obtenir un chargement progressif de l´image plutot que du ligne à ligne
+	imageinterlace($destImg, true); 
 	imagecopyresized($destImg, $oriImg, 0,0,0,0, $width, $height, $oriWidth, $oriHeight);
 
 	return $writeFunction($destImg,$imgDestFilename);
