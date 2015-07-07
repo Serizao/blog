@@ -2,6 +2,42 @@ img {
 	max-width: 100%;
 }
 
+.columns {
+	min-height: 30px;
+	list-style-type : none;
+	margin-bottom: 20px;
+	display: block;
+	padding-top: 8px;
+	padding-right: 30px;
+}
+
+.case {
+	text-decoration: none;
+  	display : inline;
+}
+
+a.bouton:link {
+	color: white;
+}
+
+a.bouton:visited {
+	color: white; 
+}
+
+
+.left{
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.columns, .case, .bouton:hover {
+ background-color:#663366;
+ } 
+
+
 html {
 	background-color: white;
   	text-align:justify;
@@ -20,20 +56,6 @@ h1,h2,h3,h4 {
 p,li,h5,h6 {
 	color : #555555;
 }
-
-.language-bash {
-	background-color: #132626;
-	color: white;
-	font-family: terminus;
-}
-
-pre {
-	padding: 5px;
-	background-color: #132626;
-	width: 50%;
-	border: solid 2px #1d1326;
-}
-
 
 .footer {
 	float: bottom;

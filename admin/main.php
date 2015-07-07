@@ -34,6 +34,6 @@ printHeader($page,$errMsg);
 			}
 		?>
 		</div>
-	<br><br><div><a href="main.php?action=publish"><p>publier les articles</p></a></div>
+	<br><br><div class="apply"><a href="main.php?action=publish" class="droid police">Appliquer</a></div>
 <?php 
 printFooter();

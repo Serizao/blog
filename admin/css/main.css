@@ -4,6 +4,67 @@ html {
   text-justify: inter-word;
 }
 
+.columns 
+{ min-height: 30px;
+  list-style-type : none;
+  margin-bottom: 20px;
+  display: block;
+  padding-top: 8px;
+  padding-right: 30px;
+}
+
+.input {
+  font-family: "Droid Sans";
+  color: #fef4e9;
+  font-size: 14px;
+  padding: .5em 2em .55em;
+  display: inline-block;
+  background: #33cc4c;
+  border-style:none;
+}
+
+.police {
+  font-size: 14px;
+  font-family: Droid Sans;
+  color: #fef4e9;
+  text-decoration: none;
+}
+
+.apply {
+  padding: .5em 2em .55em;
+  display: inline-block;
+  background: #33cc4c;
+  border-style:none;
+}
+
+.case {  
+    display : inline;
+    padding : 0 0.5em;
+    text-decoration: none;
+}
+
+a.bouton:link {
+  color: white;
+}
+
+a.bouton:visited {
+  color: white; 
+}
+
+
+.left{
+  float: left;
+  border-right: solid 1px left;
+}
+
+.right {
+  float: right;
+}
+
+.columns, .case, .bouton:hover {
+ background-color:#663366;
+ } 
+
 .droid,h1,h2,h3,h4,h5,h6,li,p,label {
     font-family: "Droid Sans";
 }

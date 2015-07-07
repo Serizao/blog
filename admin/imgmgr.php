@@ -1,5 +1,4 @@
 <?php
-	include_once('includes/functions.php'); 
 	$page['title']='Gestionnaire d´images';
 	$page['windowTitle'] = 'Gestion des images';
 	include_once ('includes/functions.php');
