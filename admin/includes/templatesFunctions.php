@@ -4,7 +4,8 @@ function publish(){
 	array_map('unlink', glob('newSite/*.html'));
 
 	$postFiles = listPostFiles();
-
+if(!empty($postFiles))
+{
 //recueillir les infos pour chaque fichier recueilli
 	foreach ($postFiles as $k => $file) {
 		$post=array();
@@ -23,22 +24,24 @@ function publish(){
 
 	usort($posts,'comparePostsByDate');
 
-	foreach ($posts as $k => $post) {
-		if ($k) {
-			$posts[$k]['previous'] = &$posts[$k-1];
-			$posts[$k-1]['next'] = &$posts[$k];
+		foreach ($posts as $k => $post) {
+			if ($k) {
+				$posts[$k]['previous'] = &$posts[$k-1];
+				$posts[$k-1]['next'] = &$posts[$k];
+			}
 		}
-	}
 
-	foreach ($posts as $post) {
-		file_put_contents($post['destfile'],parseTemplate($post,'templates/page.html'));
-	}
+	
+		foreach ($posts as $post) {
+			file_put_contents($post['destfile'],parseTemplate($post,'templates/page.html'));
+		}
+
 
 	$index['template'] = 'templates/index.html';
 	$index['items'] = $posts;
 	$index['title'] = 'Accueil';
 	file_put_contents('newSite/index.html',parseTemplate($index,'templates/page.html'));
-
+	}
 //deplacement des vieux fichiers dans un dossier de sauvegarde
 	$oldFiles = glob('../*.html');
 	foreach ($oldFiles as $file) {
@@ -99,7 +102,7 @@ function tagPageTitle($item){
 }
 
 function tagPageDescription($item){
-	return $item['description'];
+	if(isset($item['description'])){return $item['description'];}
 }
 
 function tagPostTitle($item){
@@ -111,10 +114,12 @@ function tagSiteMotto(){
 }
 
 function tagPostsList($item){
-	foreach ($item['items'] as $item) {
-		$result.=parseTemplate($item,'templates/resumepost.html');
+	if(isset($item['items'])){
+		foreach ($item['items'] as $item) {
+			$result.=parseTemplate($item,'templates/resumepost.html');
+		}
 	}
-	return $result;
+	if(isset($result)) {return $result;}
 	return '<hr size=2 align=center width="50%">';
 }
 
