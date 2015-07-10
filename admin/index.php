@@ -1,11 +1,11 @@
 <?php
-$page['windowTitle'] = 'Connexion';
 session_start();
+$page['windowTitle'] = 'Connexion';
 if ($_GET['action']=='logout'){
 	$_SESSION = array();
 	$errMsg = '<div style="border:solid 2px green;background:lightgreen;color:green;padding:1em;display:inline-block" class="droid">Votre session est terminée.</div>';
 }
-if ($_SESSION['username']=='admin'){
+if (isset($_GET['action']) and isset($_SESSION['username']) and $_SESSION['username']=='admin'){
 	header('location: main.php');
 	exit;}
 if ($_POST){
@@ -36,5 +36,5 @@ if ($_POST){
 			</form>
 			<br><a href="../index.html">retour à l'accueil</a>
 <?php
-include_once('includes/footer.php')
+include_once('includes/footer.php') 
 ?>
