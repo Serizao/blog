@@ -29,10 +29,10 @@ if ($_GET){
 		</head>
 		<body>
 			<h1>Administration</h1>
-			<ul class="columns"><li class="case left"><a href="../index.html" class="open_sans bouton">Home</a></li><li class="case left active"><a href="main.php" class="open_sans bouton">Posts</a></li><li class="case left"><a href="imgmgr.php" class="open_sans bouton">Images</a></li><li class="case right"><a href="index.php?action=logout" class="bouton open_sans">Terminer la session</a></li></ul>
+			<ul class="columns"><li class="case left"><a href="../index.html" class="free_sans bouton">Home</a></li><li class="case left active"><a href="main.php" class="free_sans bouton">Posts</a></li><li class="case left"><a href="imgmgr.php" class="free_sans bouton">Images</a></li><li class="case right"><a href="index.php?action=logout" class="bouton free_sans">Terminer la session</a></li></ul>
 			<?php print '<h2>Accueil</h2>';?>
 			<link rel="stylesheet" type="text/css" href="css/main.css">
-			<div class="apply"><a href="edit.php" class="open_sans police">Création d´un nouvel article</a></div><br>
+			<div class="apply"><a href="edit.php" class="free_sans police">Création d´un nouvel article</a></div><br>
 			<?php if (isset($errMsg)) { print $errMsg; } ?>
 			<div class="ligne"> <div class="titre"><p>Titres</p></div><div class="action"><p>Actions</p></div></div>
 			<?php
@@ -40,10 +40,10 @@ if ($_GET){
 			foreach ($files as $file) {
 				$metaData = extractMetaFromPostFile($file);
 				$shortFile = basename($file,'.md');
-				print '<div class="ligne"> <div class="titre open_sans"><p class="open_sans">'.$metaData['title'].'</p></div><div class="action"><div class="apply"><a href="edit.php?edition='.$shortFile.'" class="open_sans police">Modifier</a></div><div class="apply"><a href="?action=delete&file='.$shortFile.'" class="open_sans police">Supprimer</a></div></div></div>';
+				print '<div class="ligne"> <div class="titre free_sans"><p class="free_sans">'.$metaData['title'].'</p></div><div class="action"><div class="apply"><a href="edit.php?edition='.$shortFile.'" class="free_sans police">Modifier</a></div><div class="apply"><a href="?action=delete&file='.$shortFile.'" class="free_sans police">Supprimer</a></div></div></div>';
 			}
 			?>
 		
-	<div class="apply" style="margin-top:20px;"><a href="main.php?action=publish" class="open_sans police">Appliquer</a></div>
+	<div class="apply" style="margin-top:20px;"><a href="main.php?action=publish" class="free_sans police">Appliquer</a></div>
 <?php 
 printFooter();

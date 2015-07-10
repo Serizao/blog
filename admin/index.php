@@ -30,10 +30,10 @@ if ($_POST){
 		<body>
 			<h1>Connexion</h1>
 			<?php if (isset($errMsg)) { print $errMsg;} ?>
-			<p class="open_sans">Veuillez vous identifier</p>
+			<p class="free_sans">Veuillez vous identifier</p>
 			<form method="POST">
-				<input class="open_sans" name="username" placeholder="Nom d´utilisateur">
-				<input class="open_sans" name="password" placeholder="Mot de passe" type="password">
+				<input class="free_sans" name="username" placeholder="Nom d´utilisateur">
+				<input class="free_sans" name="password" placeholder="Mot de passe" type="password">
 				<input class="input" type="submit" value="Valider">
 			</form>
 			<br><a href="../index.html">retour à l'accueil</a>
