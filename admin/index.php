@@ -1,11 +1,12 @@
 <?php
-$page['windowTitle'] = 'Connexion';
 session_start();
-if ($_GET['action']=='logout'){
+include_once('includes/functions.php');
+$page['windowTitle'] = 'Connexion';
+if (isset($_GET['action']) AND $_GET['action']=='logout'){
 	$_SESSION = array();
 	$errMsg = '<div style="border:solid 2px green;background:lightgreen;color:green;padding:1em;display:inline-block" class="droid">Votre session est terminée.</div>';
 }
-if ($_SESSION['username']=='admin'){
+if (isset($_SESSION['username']) AND $_SESSION['username']=='admin'){
 	header('location: main.php');
 	exit;}
 if ($_POST){
@@ -28,6 +29,7 @@ if ($_POST){
 		</head>
 		<body>
 			<h1>Connexion</h1>
+			<?php if (isset($errMsg)) { print $errMsg;} ?>
 			<p class="helvetica">Veuillez vous identifier</p>
 			<form method="POST">
 				<input class="helvetica" name="username" placeholder="Nom d´utilisateur">
@@ -36,5 +38,5 @@ if ($_POST){
 			</form>
 			<br><a href="../index.html">retour à l'accueil</a>
 <?php
-include_once('includes/footer.php')
+printFooter();
 ?>

@@ -27,7 +27,7 @@ if ($_POST){
 		$errMsg = '<div style="border:solid 2px red; background:pink;color:red;padding:1em;display:inline-block">Titre invalide</div>' ;
 	}
 }
-elseif ($_GET['edition']){
+elseif (isset($_GET['edition'])){
 	$fileContent = file_get_contents('posts/'.$_GET['edition'].'.md');
 	$explodedContent = explode("\n", $fileContent , 3 );
 	$metaData = json_decode($explodedContent[0],true);
@@ -50,14 +50,14 @@ elseif ($_GET['edition']){
 			<ul class="columns"><li class="case left"><a href="../index.html" class="helvetica bouton">Home</a></li><li class="case left active"><a href="main.php" class="helvetica bouton">Posts</a></li><li class="case left"><a href="imgmgr.php" class="helvetica bouton">Images</a></li><li class="case right"><a href="index.php?action=logout" class="bouton helvetica">Logout</a></li></ul>
 			<?php print '<h2>Création / modification d´un article</h2>';?>
 			
-			<?php print $errMsg;?>
+			<?php if(isset($errMsg)) { print $errMsg; } ?>
 			<form method="POST">
 				<label for="title">Titre de l´article</label><br>
-				<input id="title" name="title" <?php if ($metaData['title']) echo 'value="'.$metaData['title'].'"';?>><br>
+				<input id="title" name="title" <?php if (isset($metaData['title'])) { echo 'value="'.$metaData['title'].'"'; } ?>><br>
 				<label for"description">En-tête (sans retour à la ligne)</label><br>
-				<textarea id="description" name="description" rows="5" cols="100"><?php if ($description) echo $description;?></textarea><br>
+				<textarea id="description" name="description" rows="5" cols="100"><?php if (isset($description)) { echo $description; } ?></textarea><br>
 				<label for="content">Contenu</label><br>
-				<textarea id="content" rows="25" cols="100" name="content"><?php if ($content) echo "$content";?></textarea><br>
+				<textarea id="content" rows="25" cols="100" name="content"><?php if (isset($content)) { echo "$content"; } ?></textarea><br>
 				<input class="input" type="submit" value="Valider">
 			</form>
 				
