@@ -1,7 +1,7 @@
 <?php
 
 function getResized($imgFilename,$width,$height){
-	$cachedFilename = getFromConfig('cacheddirectory').'/'.getResizedFilename($imgFilename,$width,$height);
+	$cachedFilename = getFromConfig('cacheddirectory').getResizedFilename($imgFilename,$width,$height);
 	if (!file_exists($cachedFilename)) {
 		resize($imgFilename,$_SERVER['DOCUMENT_ROOT'].'/'.$cachedFilename,$width,$height);
 	}
