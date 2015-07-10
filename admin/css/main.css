@@ -14,7 +14,7 @@ html {
   list-style-type : none;
   margin-bottom: 20px;
   display: block;
-  padding-top: 7px;
+  padding-top: 12px;
   padding-right: 30px;
 }
 
@@ -79,7 +79,7 @@ a.bouton:visited {
 }
 
 .apply {
-  padding: .5em 2em .55em;
+  padding: .8em 2em .55em;
   display: inline-block;
   background: #33cc4c;
   border-style:none;
