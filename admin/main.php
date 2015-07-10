@@ -33,7 +33,7 @@ if ($_GET){
 			<?php print '<h2>Accueil</h2>';?>
 			<link rel="stylesheet" type="text/css" href="css/main.css">
 			<div class="apply"><a href="edit.php" class="helvetica police">Création d´un nouvel article</a></div><br>
-			<?php print $errMsg;?>
+			<?php if(isset($errMsg)){print $errMsg;}?>
 			<div class="ligne"> <div class="titre"><p>Titres</p></div><div class="action"><p>Actions</p></div></div>
 			<?php
 			$files = listPostFiles();
