@@ -2,7 +2,7 @@ html {
   background-color: white;
   text-align:justify;
   text-justify: inter-word;
-  font-family: "Free Sans";
+  font-family: "Open Sans" , Verdana;
 }
 
 .titlenick {
@@ -74,7 +74,7 @@ a.bouton:visited {
  } 
 
 h1,h2,h3,h4,h5,h6,li,p {
-  font-family: "Free Sans";
+  font-family: "Open Sans" , Verdana;
   font-weight: 400;
 }
 

@@ -25,7 +25,7 @@
 
 	if (isset($_GET['action']) AND $_GET['action']=='upload' && $_POST && $_FILES['imagefile']) {
 		if (strpos($_FILES['imagefile']['type'],'image')!==0){
-			$errMsg = '<div style="border:solid 2px red;background:pink;color:red;padding:1em;display:inline-block" class="helvetica">Le fichier n´est pas reconnu comme une image.</div>';
+			$errMsg = '<div style="border:solid 2px red;background:pink;color:red;padding:1em;display:inline-block" class="open_sans">Le fichier n´est pas reconnu comme une image.</div>';
 		}
 		else 
 		{
@@ -38,7 +38,7 @@
 			$curDir.=$crdir.'/';
 			$absoluteCurDir = realpath($_SERVER['DOCUMENT_ROOT'].'/'.$curDir).'/';
 		}else {
-			$errMsg = '<div style="border:solid 2px red;background:pink;color:red;padding:1em;display:inline-block" class="helvetica">Impossible de créer le dossier '.$crdir.'</div>'; //cddir
+			$errMsg = '<div style="border:solid 2px red;background:pink;color:red;padding:1em;display:inline-block" class="open_sans">Impossible de créer le dossier '.$crdir.'</div>'; //cddir
 		}
 	}
 ?>
@@ -52,17 +52,17 @@
 			<link rel="stylesheet" type="text/css" href="css/main.css">
 		<body>
 		<h1>Administration</h1>
-		<ul class="columns"><li class="case left"><a href="../index.html" class="helvetica bouton">Home</a></li><li class="case left"><a href="main.php" class="helvetica bouton">Posts</a></li><li class="case left active"><a href="imgmgr.php" class="helvetica bouton">Images</a></li><li class="case right"><a href="index.php?action=logout" class="bouton helvetica">Terminer la session</a></li></ul>
+		<ul class="columns"><li class="case left"><a href="../index.html" class="open_sans bouton">Home</a></li><li class="case left"><a href="main.php" class="open_sans bouton">Posts</a></li><li class="case left active"><a href="imgmgr.php" class="open_sans bouton">Images</a></li><li class="case right"><a href="index.php?action=logout" class="bouton open_sans">Terminer la session</a></li></ul>
 		<h3>Gestionnaire d´images</h3>
 		<? if (isset($errMsg)) { php print $errMsg; } ?>
 		<fieldset>
 		<legend><h3>Dossiers</h3></legend>
-		<p class="helvetica">Emplacement actuel :</p>
+		<p class="open_sans">Emplacement actuel :</p>
 		<?php
 			echo '/'.substr($curDir,strlen($imagesRoot),-1);
 			//remonter d´un niveau ?
 			if ($curDir != $imagesRoot) {
-				print '<a href="?chdir='.dirname($curDir).'/" class="helvetica"> Remonter d´un niveau</a>';
+				print '<a href="?chdir='.dirname($curDir).'/" class="open_sans"> Remonter d´un niveau</a>';
 			}
 			// affichage des dossiers
 			$dirs = glob($absoluteCurDir.'*', GLOB_ONLYDIR);
@@ -71,7 +71,7 @@
 				foreach ($dirs as $dir) {
 					$dir=basename($dir);
 					print '<li>';
-					print '<a href="?chdir='.$curDir.$dir.'/" class="helvetica">'.$dir.'</a>';
+					print '<a href="?chdir='.$curDir.$dir.'/" class="open_sans">'.$dir.'</a>';
 					print '</li>';
 				}
 				print '</ul>';
@@ -102,7 +102,7 @@
 			}
 		?></fieldset>
 		<fieldset>
-			<legend class="helvetica">Télécharger une image</legend>
+			<legend class="open_sans">Télécharger une image</legend>
 			<form enctype="multipart/form-data" method="POST" action="?action=upload">
 				<input type="hidden" name="MAX_FILE_SIZE" value="<?php echo getFromConfig('maxuploadedfilesize');?>">
 				<label for="imagefile">Choisissez une image à télécharger :</label><br>
@@ -113,7 +113,7 @@
 		
 		<form method="POST" action="?action=createdir">
 			<fieldset>
-				<legend class="helvetica">Créer un dossier</legend>
+				<legend class="open_sans">Créer un dossier</legend>
 				<label for="directoryname">Nom du dossier à créer :</label><br>
 				<input name="directoryname" id="directoryname"><br>
 				<input class="input" type="submit" style="margin-top:10px;">

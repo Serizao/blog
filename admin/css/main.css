@@ -2,7 +2,7 @@ html {
   background-color: white;
   text-align:justify;
   text-justify: inter-word;
-  font-family: "Free Sans";
+  font-family: "Open Sans" , Verdana,;
 }
 
 /* MENUBAR */
@@ -97,8 +97,8 @@ a.bouton:visited {
 /* POLICE */
  
 
-.helvetica,h1,h2,h3,h4,h5,h6,li,p,label {
-    font-family: "Free Sans";
+.open_sans,h1,h2,h3,h4,h5,h6,li,p,label {
+    font-family: "Open Sans" , Verdana;
 }
 
 h1,h2,h3,h4,h5,h6,li,p,label {

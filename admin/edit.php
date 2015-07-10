@@ -47,7 +47,7 @@ elseif (isset($_GET['edition'])){
 			</head>
 		<body>
 			<h1>Administration</h1>
-			<ul class="columns"><li class="case left"><a href="../index.html" class="helvetica bouton">Home</a></li><li class="case left active"><a href="main.php" class="helvetica bouton">Posts</a></li><li class="case left"><a href="imgmgr.php" class="helvetica bouton">Images</a></li><li class="case right"><a href="index.php?action=logout" class="bouton helvetica">Logout</a></li></ul>
+			<ul class="columns"><li class="case left"><a href="../index.html" class="open_sans bouton">Home</a></li><li class="case left active"><a href="main.php" class="open_sans bouton">Posts</a></li><li class="case left"><a href="imgmgr.php" class="open_sans bouton">Images</a></li><li class="case right"><a href="index.php?action=logout" class="bouton open_sans">Logout</a></li></ul>
 			<?php print '<h2>Création / modification d´un article</h2>';?>
 			
 			<?php if(isset($errMsg)) { print $errMsg; } ?>
