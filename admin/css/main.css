@@ -18,6 +18,13 @@ html {
   padding-right: 30px;
 }
 
+.apercu {
+  float: left ;
+  margin-left: 20px;
+  text-align: center;
+  height: 100px;
+}
+
 .active {
   background-color: grey;
   height: 100%;}
@@ -64,6 +71,11 @@ a.bouton:visited {
   input[type="file"] {
   font: inherit;
   color: #555555; 
+}
+
+.conteneur {
+  margin-left: 45%;
+  height: 40;
 }
 
 .apply {

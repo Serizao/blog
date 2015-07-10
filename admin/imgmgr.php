@@ -49,34 +49,36 @@
 			<title>fwzte.xyz - <?php print $page['windowTitle']?></title>
 			<meta charset="utf-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
-		<body>
-			<h1>Administration</h1>
-			<ul class="columns"><li class="case left"><a href="../index.html" class="helvetica bouton">Home</a></li><li class="case left"><a href="main.php" class="helvetica bouton">Posts</a></li><li class="case left active"><a href="imgmgr.php" class="helvetica bouton">Images</a></li><li class="case right"><a href="index.php?action=logout" class="bouton helvetica">Terminer la session</a></li></ul>
-			<?php print '<h2>Gestionnaire d´images</h2>';?>
 			<link rel="stylesheet" type="text/css" href="css/main.css">
-			<?php print $errMsg;?>
-	<h3>Dossiers</h3>
-	<p class="helvetica">Emplacement actuel :</p>
-	<?php
-		echo '/'.substr($curDir,strlen($imagesRoot),-1);
-		//remonter d´un niveau ?
-		if ($curDir != $imagesRoot) {
-			print '<a href="?chdir='.dirname($curDir).'/" class="helvetica"> Remonter d´un niveau</a>';
-		}
-		// affichage des dossiers
-		$dirs = glob($absoluteCurDir.'*', GLOB_ONLYDIR);
-		if ($dirs) {
-			print '<ul>';
-			foreach ($dirs as $dir) {
-				$dir=basename($dir);
-				print '<li>';
-				print '<a href="?chdir='.$curDir.$dir.'/" class="helvetica">'.$dir.'</a>';
-				print '</li>';
+		<body>
+		<h1>Administration</h1>
+		<ul class="columns"><li class="case left"><a href="../index.html" class="helvetica bouton">Home</a></li><li class="case left"><a href="main.php" class="helvetica bouton">Posts</a></li><li class="case left active"><a href="imgmgr.php" class="helvetica bouton">Images</a></li><li class="case right"><a href="index.php?action=logout" class="bouton helvetica">Terminer la session</a></li></ul>
+		<h3>Gestionnaire d´images</h3>
+		<?php print $errMsg;?>
+		<fieldset>
+		<legend><h3>Dossiers</h3></legend>
+		<p class="helvetica">Emplacement actuel :</p>
+		<?php
+			echo '/'.substr($curDir,strlen($imagesRoot),-1);
+			//remonter d´un niveau ?
+			if ($curDir != $imagesRoot) {
+				print '<a href="?chdir='.dirname($curDir).'/" class="helvetica"> Remonter d´un niveau</a>';
 			}
-			print '</ul>';
-		}
-		?>
-		<h2>Images</h2>
+			// affichage des dossiers
+			$dirs = glob($absoluteCurDir.'*', GLOB_ONLYDIR);
+			if ($dirs) {
+				print '<ul>';
+				foreach ($dirs as $dir) {
+					$dir=basename($dir);
+					print '<li>';
+					print '<a href="?chdir='.$curDir.$dir.'/" class="helvetica">'.$dir.'</a>';
+					print '</li>';
+				}
+				print '</ul>';
+			}
+		?></fieldset>
+		<fieldset>
+		<legend><h3>Images</h3></legend>
 		<?php
 			$imageFiles = array();
 			$finfo = finfo_open(FILEINFO_MIME_TYPE);
@@ -90,22 +92,27 @@
 				$width = getFromConfig('thumbWidth');
 				$height = getFromConfig('thumbHeight');
 				foreach ($imageFiles as $imageFile) {
+					print '<div class="apercu">';
 					$url = substr(realpath($imageFile),strlen($_SERVER['DOCUMENT_ROOT']));
-					print '<img src"'.getResized($imageFile,$width,$height).'" onclick="javascript:c=parent.document.getElementById(\'content\');c. value+=\'![texte]('.$url.')\';c.focus();">';
-				}
+					$url = substr($url,1); 
+					print '<img src="../'.getResized($imageFile,$width,$height).'" onclick="javascript:c=parent.document.getElementById(\'content\');c. value+=\'![texte]('.$url.')\';c.focus();"><br>';
+					echo $url . '<br>';
+					print '</div>';
+					}
 			}
-		?>
-		<form enctype="multipart/form-data" method="POST" action="?action=upload">
-			<input type="hidden" name="MAX_FILE_SIZE" value="<?php echo getFromConfig('maxuploadedfilesize');?>">
-			<fieldset style="width:60%;">
-				<legend class="helvetica">Envoyer une image</legend>
-				<label for="imagefile">Choisissez une image à télécharger :</label><br><br>
-				<input type="file" name="imagefile" id="imagefile"><br>
+		?></fieldset>
+		<fieldset>
+			<legend class="helvetica">Télécharger une image</legend>
+			<form enctype="multipart/form-data" method="POST" action="?action=upload">
+				<input type="hidden" name="MAX_FILE_SIZE" value="<?php echo getFromConfig('maxuploadedfilesize');?>">
+				<label for="imagefile">Choisissez une image à télécharger :</label><br>
+				<input type="file" name="imagefile"><br>
 				<input class="input" type="submit" style="margin-top:10px;">
-			</fieldset>
-		</form>
+			</form>
+		</fieldset>
+		
 		<form method="POST" action="?action=createdir">
-			<fieldset style="width:60%;">
+			<fieldset>
 				<legend class="helvetica">Créer un dossier</legend>
 				<label for="directoryname">Nom du dossier à créer :</label><br>
 				<input name="directoryname" id="directoryname"><br>
@@ -115,4 +122,3 @@
 	<?php
 printFooter();
 ?>
-
