@@ -55,7 +55,7 @@ elseif ($_GET['edition']){
 				<label for="title">Titre de l´article</label><br>
 				<input id="title" name="title" <?php if ($metaData['title']) echo 'value="'.$metaData['title'].'"';?>><br>
 				<label for"description">En-tête (sans retour à la ligne)</label><br>
-<textarea id="description" name="description" rows="5" cols="100"><?php if (isset($description)) echo $description;?></textarea><br>
+				<textarea id="description" name="description" rows="5" cols="100"><?php if (isset($description)) echo $description;?></textarea><br>
 				<label for="content">Contenu</label><br>
 				<textarea id="content" rows="25" cols="100" name="content"><?php if (isset($content)) echo "$content";?></textarea><br>
 				<input class="input" type="submit" value="Valider">
