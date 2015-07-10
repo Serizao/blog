@@ -14,7 +14,7 @@ html {
   list-style-type : none;
   margin-bottom: 20px;
   display: block;
-  padding-top: 12px;
+  padding-top: 7px;
   padding-right: 30px;
 }
 
@@ -69,7 +69,8 @@ a.bouton:visited {
   border-style:none;
 }
   input[type="file"] {
-  font: inherit;
+  margin-top: 5px;
+  font: "Free Sans";
   color: #555555; 
 }
 
@@ -79,7 +80,7 @@ a.bouton:visited {
 }
 
 .apply {
-  padding: .8em 2em .55em;
+  padding: .5em 2em .55em;
   display: inline-block;
   background: #33cc4c;
   border-style:none;

@@ -30,7 +30,7 @@ if ($_GET){
 		<body>
 			<h1>Administration</h1>
 			<ul class="columns"><li class="case left"><a href="../index.html" class="free_sans bouton">Home</a></li><li class="case left active"><a href="main.php" class="free_sans bouton">Posts</a></li><li class="case left"><a href="imgmgr.php" class="free_sans bouton">Images</a></li><li class="case right"><a href="index.php?action=logout" class="bouton free_sans">Terminer la session</a></li></ul>
-			<?php print '<h2>Accueil</h2>';?>
+			<?php print '<h1>Accueil</h1>';?>
 			<link rel="stylesheet" type="text/css" href="css/main.css">
 			<div class="apply"><a href="edit.php" class="free_sans police">Création d´un nouvel article</a></div><br>
 			<?php if (isset($errMsg)) { print $errMsg; } ?>
