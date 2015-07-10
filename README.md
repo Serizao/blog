@@ -44,5 +44,6 @@ vous pourrez créer un article. Une fois les modifications terminées, un fichie
 *  edit.php est la page d'édition de contenu.
 *  imgmgr.php est la page de gestion des images. À la racine se trouve un dossier download/img. 
 C'est ici que se passe la gestion des images, vous pourrez donc y créer des dossiers à partir de l'interface afin        d'organiser vos images. Vous pourrez également les uploader. (ces features sont encore en cours)
+*  config.php contient certaines valeurs qu'on viendra chercher à l'occasion, comme le titre, le descriptif du blog lors de la génération de pages. Il vous faudra donc modifier les champs "siteTitle" et "siteMotto" afin de les personnaliser.
 
 Je me suis aidé de parsedown pour la conversion de contenus markdown vers html ainsi que de prism pour la coloration syntaxique pour les portions de code. Un grand merci, donc.
