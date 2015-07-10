@@ -43,7 +43,7 @@ if ($_POST['username']=='admin' && $_POST['password']=='monpass'){
 vous pourrez créer un article. Une fois les modifications terminées, un fichier en markdown est créé. Vous devrez appliquer afin de générer le contenu en html. En cas d'erreur, l´ancien contenu est archivé dans le dossier oldSite, le dossier newSite lui stocke les données temporaires et sera, la plupart du temps vide.
 *  edit.php est la page d'édition de contenu.
 *  imgmgr.php est la page de gestion des images. À la racine se trouve un dossier download/img. 
-C'est ici que se passe la gestion des images, vous pourrez donc y créer des dossiers à partir de l'interface afin        d'organiser vos images. Vous pourrez également les uploader. (ces features sont encore en cours)
-*  config.php contient certaines valeurs qu'on viendra chercher à l'occasion, comme le titre, le descriptif du blog lors de la génération de pages. Il vous faudra donc modifier les champs "siteTitle" et "siteMotto" afin de les personnaliser.
+C'est ici que se passe la gestion des images, vous pourrez donc y créer des dossiers à partir de l'interface afin        d'organiser vos images. Vous pourrez également les uploader. Un apercu permet de visualiser la miniature et d'en sélectionner l'url, afin de simplifier les insersions dans Markdown.
+*  config.php contient certaines valeurs qu'on viendra chercher à l'occasion, comme le titre, le descriptif du blog lors de la génération de pages. Il vous faudra donc modifier les champs "siteTitle" et "siteMotto" afin de les personnaliser. Vous pourrez également y modifier la taille maximale des fichiers que vous pourrez attacher (actuellement 2Lo). Je vous conseille de ne pas toucher aux autres valeurs.
 
 Je me suis aidé de parsedown pour la conversion de contenus markdown vers html ainsi que de prism pour la coloration syntaxique pour les portions de code. Un grand merci, donc.
