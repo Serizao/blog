@@ -5,7 +5,7 @@
 	include_once ('includes/imagesFunctions.php');
 	secureAccess();
 	$imagesRoot = getFromConfig('imgdirectory');
-	if (!array_key_exists('imgmgr',$_SESSION)) $_SESSION['imgmgr']=array();
+	if (!array_key_exists('imgmgr',$_SESSION)) $_SESSION['imgmgr'] = array();
 	//reglage du repertoire courant
 	if ($_GET['chdir']) {
 		$newDir = realpath($_SERVER['DOCUMENT_ROOT']).'/'.$_GET['chdir'];
@@ -23,12 +23,14 @@
 	}
 	$absoluteCurDir = realpath($_SERVER['DOCUMENT_ROOT'].'/'.$curDir).'/';
 
-	if ($_GET['action']=='upload' && $_POST && $_FILES['imageFile']) {
+	if ($_GET['action']=='upload' && $_POST && $_FILES['imagefile']) {
 		if (strpos($_FILES['imagefile']['type'],'image')!==0){
-			$errMsg = '<div style="border:solid 2px red;background:pink;color:red;padding:1em;display:inline-block" class="droid">Le fichier n´est pas reconnu comme une image.</div>';
-		}else {
+			$errMsg = '<div style="border:solid 2px red;background:pink;color:red;padding:1em;display:inline-block" class="helvetica">Le fichier n´est pas reconnu comme une image.</div>';
+		}
+		else 
+		{
 			move_uploaded_file($_FILES['imagefile']['tmp_name'] , $absoluteCurDir.basename($_FILES['imagefile']['name']));
-		}		
+	}		
 	}
 
 	if ($_GET['action']=='createdir' && $crdir = basename ($_POST['directoryname'])) {
@@ -36,18 +38,30 @@
 			$curDir.=$crdir.'/';
 			$absoluteCurDir = realpath($_SERVER['DOCUMENT_ROOT'].'/'.$curDir).'/';
 		}else {
-			$errMsg = '<div style="border:solid 2px red;background:pink;color:red;padding:1em;display:inline-block" class="droid">Impossible de créer le dossier '.$crdir.'</div>'; //cddir
+			$errMsg = '<div style="border:solid 2px red;background:pink;color:red;padding:1em;display:inline-block" class="helvetica">Impossible de créer le dossier '.$crdir.'</div>'; //cddir
 		}
 	}
-printHeader($page,$errMsg);
 ?>
-	<h2>Dossiers</h2>
-	<p class="droid">Emplacement actuel :</p>
+
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>fwzte.xyz - <?php print $page['windowTitle']?></title>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
+		<body>
+			<h1>Administration</h1>
+			<ul class="columns"><li class="case left"><a href="../index.html" class="helvetica bouton">Home</a></li><li class="case left"><a href="main.php" class="helvetica bouton">Posts</a></li><li class="case left active"><a href="imgmgr.php" class="helvetica bouton">Images</a></li><li class="case right"><a href="index.php?action=logout" class="bouton helvetica">Terminer la session</a></li></ul>
+			<?php print '<h2>Gestionnaire d´images</h2>';?>
+			<link rel="stylesheet" type="text/css" href="css/main.css">
+			<?php print $errMsg;?>
+	<h3>Dossiers</h3>
+	<p class="helvetica">Emplacement actuel :</p>
 	<?php
 		echo '/'.substr($curDir,strlen($imagesRoot),-1);
 		//remonter d´un niveau ?
 		if ($curDir != $imagesRoot) {
-			print '<a href="?chdir='.dirname($curDir).'/" class="droid"> Remonter d´un niveau</a>';
+			print '<a href="?chdir='.dirname($curDir).'/" class="helvetica"> Remonter d´un niveau</a>';
 		}
 		// affichage des dossiers
 		$dirs = glob($absoluteCurDir.'*', GLOB_ONLYDIR);
@@ -56,7 +70,7 @@ printHeader($page,$errMsg);
 			foreach ($dirs as $dir) {
 				$dir=basename($dir);
 				print '<li>';
-				print '<a href="?chdir='.$curDir.$dir.'/" class="droid">'.$dir.'</a>';
+				print '<a href="?chdir='.$curDir.$dir.'/" class="helvetica">'.$dir.'</a>';
 				print '</li>';
 			}
 			print '</ul>';
@@ -66,7 +80,7 @@ printHeader($page,$errMsg);
 		<?php
 			$imageFiles = array();
 			$finfo = finfo_open(FILEINFO_MIME_TYPE);
-			foreach (glob($absoluteCurDir.'*')as $filename) {
+			foreach (glob($absoluteCurDir.'*') as $filename) {
 				if (strpos(finfo_file($finfo, $filename),'image')===0){
 					$imageFiles[]=$filename;
 				}
@@ -83,17 +97,19 @@ printHeader($page,$errMsg);
 		?>
 		<form enctype="multipart/form-data" method="POST" action="?action=upload">
 			<input type="hidden" name="MAX_FILE_SIZE" value="<?php echo getFromConfig('maxuploadedfilesize');?>">
-			<fieldset><legend class="droid">Envoyer une image</legend>
-				<label for="imagefile">Choisissez une image à télécharger :</label><br>
+			<fieldset style="width:60%;">
+				<legend class="helvetica">Envoyer une image</legend>
+				<label for="imagefile">Choisissez une image à télécharger :</label><br><br>
 				<input type="file" name="imagefile" id="imagefile"><br>
-				<input type="submit">
+				<input class="input" type="submit" style="margin-top:10px;">
 			</fieldset>
 		</form>
 		<form method="POST" action="?action=createdir">
-			<fieldset><legend class="droid">Créer un dossier</legend>
+			<fieldset style="width:60%;">
+				<legend class="helvetica">Créer un dossier</legend>
 				<label for="directoryname">Nom du dossier à créer :</label><br>
 				<input name="directoryname" id="directoryname"><br>
-				<input type="submit">
+				<input class="input" type="submit" style="margin-top:10px;">
 			</fieldset>
 		</form>
 	<?php

@@ -12,8 +12,8 @@ function resize($imgOriFilename,$imgDestFilename,$width,$height){
 	if (!is_string($createFunction = getImageCreateFunctionFromFile($imgOriFilename))) return false;
 	if (!is_string($writeFunction = getImageWriteFunctionFromFile($imgOriFilename))) return false;
 	$oriImg = $createFunction($imgOriFilename);
-	$oriWidth = $imagesx($oriImg);
-	$oriHeight = $imagesy($oriImg);
+	$oriWidth = imagesx($oriImg);
+	$oriHeight = imagesy($oriImg);
 
 	if ($oriWidth/$oriHeight>$width/$height) {
 		$height=$oriHeight/$oriWidth*$width;

@@ -1,13 +1,7 @@
-<?php
-session_start();
-if ($_GET['action']=='logout'){
-	$_SESSION = array();
-	$errMsg = '<div style="border:solid 2px green;background:lightgreen;color:green;padding:1em;display:inline-block">Votre session est terminée.</div>';
-}?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>blog - Accueil</title>
+	<title>Blog - Accueil</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
@@ -16,11 +10,9 @@ if ($_GET['action']=='logout'){
 	<script type="text/javascript" src="js/prism.js"></script>
 </head>
 <body>
-	<h1>blog</h1>
-<ul class="columns"><li class="case left"><a href="index.html" class="droid bouton">Home</a></li><li class="case right"><a href="admin/main.php" class="droid bouton">Administration</a></ul>
+	<h1>Blog</h1>
+<ul class="columns"><li class="case left active"><a href="index.html" class="helvetica bouton">Home</a></li><li class="case left"><a href="admin/main.php" class="helvetica bouton">Administration</a></li><li class="case right"><a href="admin/index.php" class="helvetica bouton">Login</a></li></ul>
 <p class="droid">squelette de blog réalisé en php</p>
-<p class="droid"><h2><a href="blabla.html">blabla</a></h2>
-<p>blabla</p><h2><a href="montage-dossier-distant.html">montage-dossier-distant</a></h2>
-<p>J'ai souvent besoin de partager des fichiers entre mes postes et mes VPS. J'ai donc cherché une solution me permettant de monter un dossier distant sur un poste local.</p></p>
+<p class="droid"></p>
 </body>
 </html>

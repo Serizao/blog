@@ -1,6 +1,6 @@
 <?php
 $config = array(
-	'siteTitle' => 'blog',
+	'siteTitle' => 'Blog',
 	'siteMotto' => 'squelette de blog réalisé en php',
 	'imgdirectory' => 'download/img/',
 	'cacheddirectory' => 'cache/',

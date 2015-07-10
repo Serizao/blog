@@ -1,4 +1,5 @@
 <?php
+$page['windowTitle'] = 'Connexion';
 session_start();
 if ($_GET['action']=='logout'){
 	$_SESSION = array();
@@ -16,14 +17,24 @@ if ($_POST){
 		$errMsg = '<div style="border:solid 2px red; background:pink;color:red;padding:1em;display:inline-block" class="droid">Nom d´utilisateur ou mot de passe invalide.</div>' ;
 	}
 }
-include_once('includes/header.php');
 ?>
-	<p class="droid">Veuillez vous identifier</p>
-	<form method="POST">
-		<input class="droid" name="username" placeholder="Nom d´utilisateur">
-		<input class="droid" name="password" placeholder="Mot de passe" type="password">
-		<input type="submit">		
-	</form>
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>fwzte.xyz - <?php print $page['windowTitle']?></title>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<link rel="stylesheet" type="text/css" href="css/main.css">
+		</head>
+		<body>
+			<h1>Connexion</h1>
+			<p class="helvetica">Veuillez vous identifier</p>
+			<form method="POST">
+				<input class="helvetica" name="username" placeholder="Nom d´utilisateur">
+				<input class="helvetica" name="password" placeholder="Mot de passe" type="password">
+				<input class="input" type="submit" value="Valider">
+			</form>
+			<br><a href="../index.html">retour à l'accueil</a>
 <?php
 include_once('includes/footer.php')
 ?>

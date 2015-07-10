@@ -18,22 +18,32 @@ if ($_GET){
 		$errMsg = publish();
 		}
 }
-
-//print '<p><a href="../index.html">retour à l\'accueil</a> -</p>' ;
-printHeader($page,$errMsg);
-
 ?>
-	<p><a href="edit.php">Création d´un nouvel article</a></p>
-		<div class="tableau"><p class="legende,ligne"><span class="case1">Titre</span><span class="case2">Actions</span>
-		<?php
-		$files = listPostFiles();
-		foreach ($files as $file) {
-			$metaData = extractMetaFromPostFile($file);
-			$shortFile = basename($file,'.md');
-			print '<p classe="ligne"><span class="case1">'.$metaData['title'].'</span><span class="case2"><a href="edit.php?edition='.$shortFile.'">Modifier</a> - <a href="?action=delete&file='.$shortFile.'">Supprimer</a></span></p>';
+
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>fwzte.xyz - <?php print $page['windowTitle']?></title>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		</head>
+		<body>
+			<h1>Administration</h1>
+			<ul class="columns"><li class="case left"><a href="../index.html" class="helvetica bouton">Home</a></li><li class="case left active"><a href="main.php" class="helvetica bouton">Posts</a></li><li class="case left"><a href="imgmgr.php" class="helvetica bouton">Images</a></li><li class="case right"><a href="index.php?action=logout" class="bouton helvetica">Terminer la session</a></li></ul>
+			<?php print '<h2>Accueil</h2>';?>
+			<link rel="stylesheet" type="text/css" href="css/main.css">
+			<div class="apply"><a href="edit.php" class="helvetica police">Création d´un nouvel article</a></div><br>
+			<?php print $errMsg;?>
+			<div class="ligne"> <div class="titre"><p>Titres</p></div><div class="action"><p>Actions</p></div></div>
+			<?php
+			$files = listPostFiles();
+			foreach ($files as $file) {
+				$metaData = extractMetaFromPostFile($file);
+				$shortFile = basename($file,'.md');
+				print '<div class="ligne"> <div class="titre helvetica"><p class="helvetica">'.$metaData['title'].'</p></div><div class="action"><div class="apply"><a href="edit.php?edition='.$shortFile.'" class="helvetica police">Modifier</a></div><div class="apply"><a href="?action=delete&file='.$shortFile.'" class="helvetica police">Supprimer</a></div></div></div>';
 			}
-		?>
-		</div>
-	<br><br><div class="apply"><a href="main.php?action=publish" class="droid police">Appliquer</a></div>
+			?>
+		
+	<div class="apply" style="margin-top:20px;"><a href="main.php?action=publish" class="helvetica police">Appliquer</a></div>
 <?php 
 printFooter();
