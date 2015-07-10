@@ -7,7 +7,7 @@
 	$imagesRoot = getFromConfig('imgdirectory');
 	if (!array_key_exists('imgmgr',$_SESSION)) $_SESSION['imgmgr'] = array();
 	//reglage du repertoire courant
-	if ($_GET['chdir']) {
+	if (isset($_GET['chdir'])) {
 		$newDir = realpath($_SERVER['DOCUMENT_ROOT']).'/'.$_GET['chdir'];
 		$absoluteImagesRoot = realpath($_SERVER['DOCUMENT_ROOT'].'/'.$imagesRoot);
 		if (substr($newDir,0,strlen($absoluteImagesRoot)) == $absoluteImagesRoot) {
@@ -21,9 +21,12 @@
 	}else {
 		$curDir = $_SESSION['imgmgr']['currentdir'] = $imagesRoot;
 	}
-	$absoluteCurDir = realpath($_SERVER['DOCUMENT_ROOT'].'/'.$curDir).'/';
+	
+	 if(substr($curDir,strlen($imagesRoot))!= ''){$absoluteCurDir='/'.substr($curDir,strlen($imagesRoot));}
+	else { $absoluteCurDir = realpath($_SERVER['DOCUMENT_ROOT'].'/'.$curDir).'/'; }
 
-	if ($_GET['action']=='upload' && $_POST && $_FILES['imagefile']) {
+
+	if (isset($_GET['action']) and $_GET['action']=='upload' && $_POST && $_FILES['imagefile']) {
 		if (strpos($_FILES['imagefile']['type'],'image')!==0){
 			$errMsg = '<div style="border:solid 2px red;background:pink;color:red;padding:1em;display:inline-block" class="helvetica">Le fichier n´est pas reconnu comme une image.</div>';
 		}
@@ -33,7 +36,7 @@
 	}		
 	}
 
-	if ($_GET['action']=='createdir' && $crdir = basename ($_POST['directoryname'])) {
+	if (isset($_GET['action']) and $_GET['action']=='createdir' && $crdir = basename ($_POST['directoryname'])) {
 		if (mkdir($absoluteCurDir.$crdir)) {
 			$curDir.=$crdir.'/';
 			$absoluteCurDir = realpath($_SERVER['DOCUMENT_ROOT'].'/'.$curDir).'/';
@@ -54,7 +57,7 @@
 		<h1>Administration</h1>
 		<ul class="columns"><li class="case left"><a href="../index.html" class="helvetica bouton">Home</a></li><li class="case left"><a href="main.php" class="helvetica bouton">Posts</a></li><li class="case left active"><a href="imgmgr.php" class="helvetica bouton">Images</a></li><li class="case right"><a href="index.php?action=logout" class="bouton helvetica">Terminer la session</a></li></ul>
 		<h3>Gestionnaire d´images</h3>
-		<?php print $errMsg;?>
+		<?php if(isset($errMsg)){ print $errMsg;}?>
 		<fieldset>
 		<legend><h3>Dossiers</h3></legend>
 		<p class="helvetica">Emplacement actuel :</p>
